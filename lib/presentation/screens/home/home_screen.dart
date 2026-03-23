@@ -1,7 +1,11 @@
 import 'package:e301_widgets_app_01/config/menu/menu_items.dart';
+import 'package:e301_widgets_app_01/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String name = 'home_screen';
+
   const HomeScreen({super.key});
 
   @override
@@ -39,12 +43,13 @@ class _CustomListTile extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return ListTile(
-      leading: Icon(menuItem.icon,color: colors.primary),
-      trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary,),
+      leading: Icon(menuItem.icon, color: colors.primary),
+      trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
-      onTap: (){
-        //TODO:navegar entre pantallas
+      onTap: () {
+        context.push(menuItem.link);
+        //context.pushNamed(ButtonsScreen.name);
       },
     );
   }
