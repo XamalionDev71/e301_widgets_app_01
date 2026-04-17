@@ -1,5 +1,5 @@
 import 'package:e301_widgets_app_01/config/menu/menu_items.dart';
-import 'package:e301_widgets_app_01/presentation/screens/screens.dart';
+import 'package:e301_widgets_app_01/presentation/screens/home/widgets/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,9 +10,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(title: Text('Widgets en Flutter')),
       body: _HomeView(),
+      drawer: SideMenu(scaffoldKey: scaffoldKey,),
     );
   }
 }
@@ -36,7 +40,7 @@ class _HomeView extends StatelessWidget {
 class _CustomListTile extends StatelessWidget {
   const _CustomListTile({required this.menuItem});
 
-  final MenuItems menuItem;
+  final MenuItem menuItem;
 
   @override
   Widget build(BuildContext context) {
@@ -54,3 +58,4 @@ class _CustomListTile extends StatelessWidget {
     );
   }
 }
+
